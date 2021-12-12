@@ -1,0 +1,86 @@
+<h2>Reactive: Switches</h2>
+<hr />
+
+<form [formGroup]="myForm" (ngSubmit)="save()">
+  <!-- Radios -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Gender</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          formControlName="gender"
+          id="maleRadio"
+          value="M"
+        />
+        <label class="form-check-label" for="maleRadio"> Male </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          formControlName="gender"
+          id="femaleRadio"
+          value="F"
+        />
+        <label class="form-check-label" for="femaleRadio"> Female </label>
+      </div>
+      <span class="form-text text-danger">Please select a gender</span>
+    </div>
+  </div>
+  <!-- Notifications -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notifications</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch mt-2">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckChecked"
+          formControlName="notifications"
+        />
+        <label class="form-check-label" for="flexSwitchCheckChecked"
+          >I want to receive notifications</label
+        >
+      </div>
+    </div>
+  </div>
+  <!-- Terms -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9 mt-1">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexCheckDefault"
+          formControlName="terms"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          Terms and Conditions
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+
+<h4>Form value</h4>
+<pre>{{ myForm.value | json }}</pre>
+<br />
+
+<h4>Valid</h4>
+<pre>{{ myForm.valid | json }}</pre>
+
+<br />
+<h4>Person</h4>
+<pre>{{ person | json }}</pre>
+
+<h4>Terms</h4>
+<!-- <pre>{{ myForm.controls?.terms?.errors| json }}</pre> -->
+<br />

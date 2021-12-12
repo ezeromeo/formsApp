@@ -1,0 +1,85 @@
+<h2>Template: Basics</h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <form (ngSubmit)="save()" #myForm="ngForm">
+      <!-- Campo de producto -->
+      <div class="mb-3 ro">
+        <label class="col-sm-3 col-form-label">Product</label>
+        <div class="col-sm-9">
+          <input
+            autocomplete="off"
+            class="form-control"
+            name="product"
+            [ngModel]="initForm.product"
+            placeholder="Product"
+            required
+            type="text"
+            minlength="3"
+          />
+          <span class="form-text text-danger" *ngIf="validName()"
+            >Must have 3 at least characters</span
+          >
+        </div>
+      </div>
+      <!-- Campo de precio -->
+      <div class="mb-3 ro">
+        <label class="col-sm-3 col-form-label">Price</label>
+        <div class="col-sm-9">
+          <input
+            autocomplete="off"
+            class="form-control"
+            min="0"
+            name="price"
+            [ngModel]="initForm.price"
+            placeholder="Price"
+            required
+            type="number"
+          />
+          <span class="form-text text-danger" *ngIf="validPrice()">
+            Price must be greater than or equal to 0
+          </span>
+          <!-- <span class="form-text text-danger">Must have 3 letters</span> -->
+        </div>
+      </div>
+      <!-- Campo de stock -->
+      <div class="mb-3 ro">
+        <label class="col-sm-3 col-form-label">Stock</label>
+        <div class="col-sm-9">
+          <input
+            autocomplete="off"
+            class="form-control"
+            name="stocks"
+            [ngModel]="initForm.stocks"
+            placeholder="Stocks"
+            type="text"
+            customMin
+            [minimum] = "0"
+            required
+          />
+          <!-- <span class="form-text text-danger">Must have 3 letters</span> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary float-end" type="submit" [disabled]="myForm.invalid">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ myForm.valid }}</pre>
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine }}</pre>
+    <span>Touched</span>
+    <pre>{{ myForm.touched }}</pre>
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+    <span>CustomDirective</span>
+    <pre>{{ myForm.controls.stocks?.errors| json }}</pre>
+  </div>
+</div>
